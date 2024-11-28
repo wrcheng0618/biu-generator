@@ -17,7 +17,7 @@ import java.io.Writer;
  */
 public class DynamicGenerator {
 
-    private static void doGenerate(String inputPath, String outputPath, Object model) throws IOException, TemplateException {
+    public static void doGenerate(String inputPath, String outputPath, Object model) throws IOException, TemplateException {
         // 新建（new）出 Configuration 对象，参数为 FreeMarker 版本号
         Configuration configuration = new Configuration(Configuration.VERSION_2_3_32);
 
@@ -48,9 +48,10 @@ public class DynamicGenerator {
         System.out.println("当前工作目录：" + projectPath);
         // 由于工作目录是D:\idea\biu-generator，因此这么写会报FileNotFoundException
         // String inputPath = projectPath + File.separator + "src/main/resources/templates/MainTemplate.java.ftl";
-        String inputPath = projectPath + File.separator + "biu-generator-basic/src/main/resources/templates/MainTemplate.java.ftl";
+        projectPath = projectPath + File.separator + "biu-generator-basic";
+        String inputPath = projectPath + File.separator + "src/main/resources/templates/MainTemplate.java.ftl";
 
-        String outputPath = projectPath + File.separator + "biu-generator-basic/MainTemplate.java";
+        String outputPath = projectPath + File.separator + "MainTemplate.java";
 
         // 创建数据模型
         MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
